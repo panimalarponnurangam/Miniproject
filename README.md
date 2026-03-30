@@ -1,59 +1,144 @@
-## Title of the Project
-Small description about the project like one below
-The integration of a chatbot within a hostel booking system, aimed at streamlining the reservation process for students and improving the overall user experience.
+# 🌬️ Smart HVAC Airflow Balancing System
 
-## About
-<!--Detailed Description about the project-->
-Tailored Chatbot for Hostel Booking System is a project designed to integrate a chatbot that leverages advanced natural language processing techniques to understand and respond to user queries to the hostel booking system. Traditional hostel booking processes are often time-consuming and involve manual searches and extensive communication with hostel staff. This project seeks to overcome these challenges by creating an easy-to-use chatbot interface that assists students in addressing inquiries.
+> An IoT-based intelligent airflow control system that automatically adjusts fan speed based on real-time temperature conditions using a **DHT11** sensor, **ESP8266** microcontroller, and **PWM control** via an **L298N motor driver**.
 
-## Features
-<!--List the features of the project as shown below-->
-- Implements advance neural network method.
-- A framework based application for deployment purpose.
-- High scalability.
-- Less time complexity.
-- A specific scope of Chatbot response model, using json data format.
+---
 
-## Requirements
-<!--List the requirements of the project as shown below-->
-* Operating System: Requires a 64-bit OS (Windows 10 or Ubuntu) for compatibility with deep learning frameworks.
-* Development Environment: Python 3.6 or later is necessary for coding the sign language detection system.
-* Deep Learning Frameworks: TensorFlow for model training, MediaPipe for hand gesture recognition.
-* Image Processing Libraries: OpenCV is essential for efficient image processing and real-time hand gesture recognition.
-* Version Control: Implementation of Git for collaborative development and effective code management.
-* IDE: Use of VSCode as the Integrated Development Environment for coding, debugging, and version control integration.
-* Additional Dependencies: Includes scikit-learn, TensorFlow (versions 2.4.1), TensorFlow GPU, OpenCV, and Mediapipe for deep learning tasks.
+## 📌 Project Overview
 
-## System Architecture
-<!--Embed the system architecture diagram as shown below-->
+Traditional HVAC systems often distribute air at a constant rate without considering temperature changes in the environment. This project introduces a **smart airflow balancing system** that monitors temperature and automatically controls fan speed to maintain comfortable conditions and improve energy efficiency.
 
-![Screenshot 2023-11-25 133637](https://github.com/<<yourusername>>/Hand-Gesture-Recognition-System/assets/75235455/a60c11f3-0a11-47fb-ac89-755d5f45c995)
+The system continuously reads temperature data and adjusts the cooling fan speed accordingly.
 
+---
 
-## Output
+## ✨ Features
 
-<!--Embed the Output picture at respective places as shown below as shown below-->
-#### Output1 - Name of the output
+- 🌡️ Real-time temperature monitoring
+- ⚡ Automatic fan speed control
+- 🔧 PWM-based airflow regulation
+- 💡 Energy-efficient cooling
+- 🛠️ Simple and low-cost hardware setup
+- 🌐 Expandable for IoT monitoring
 
-![Screenshot 2023-11-25 134037](https://github.com/<<yourusername>>/Hand-Gesture-Recognition-System/assets/75235455/8c2b6b5c-5ed2-4ec4-b18e-5b6625402c16)
+---
 
-#### Output2 - Name of the output
-![Screenshot 2023-11-25 134253](https://github.com/<<yourusername>>/Hand-Gesture-Recognition-System/assets/75235455/5e05c981-05ca-4aaa-aea2-d918dcf25cb7)
+## 🧰 Hardware Components
 
-Detection Accuracy: 96.7%
-Note: These metrics can be customized based on your actual performance evaluations.
+| Component | Description |
+|---|---|
+| ESP8266 NodeMCU | Main microcontroller |
+| DHT11 Temperature Sensor | Reads ambient temperature |
+| L298N Motor Driver Module | Controls fan speed via PWM |
+| 5V DC Fan | Cooling output |
+| External 5V Power Supply | Powers the motor driver |
+| Jumper Wires | Connections |
+| Breadboard | Prototyping base |
 
+---
 
-## Results and Impact
-<!--Give the results and impact as shown below-->
-The Sign Language Detection System enhances accessibility for individuals with hearing and speech impairments, providing a valuable tool for inclusive communication. The project's integration of computer vision and deep learning showcases its potential for intuitive and interactive human-computer interaction.
+## 🏗️ System Architecture
 
-This project serves as a foundation for future developments in assistive technologies and contributes to creating a more inclusive and accessible digital environment.
+```
+Temperature Sensor → ESP8266 Controller → PWM Signal → L298N Driver → Cooling Fan
+```
 
-## Articles published / References
-1. N. S. Gupta, S. K. Rout, S. Barik, R. R. Kalangi, and B. Swampa, “Enhancing Heart Disease Prediction Accuracy Through Hybrid Machine Learning Methods ”, EAI Endorsed Trans IoT, vol. 10, Mar. 2024.
-2. A. A. BIN ZAINUDDIN, “Enhancing IoT Security: A Synergy of Machine Learning, Artificial Intelligence, and Blockchain”, Data Science Insights, vol. 2, no. 1, Feb. 2024.
+The **DHT11** sensor collects temperature data and sends it to the **ESP8266**. The microcontroller processes the data and generates a **PWM signal** that controls the fan speed through the **L298N motor driver**.
 
+---
 
+## 🔌 Circuit Connections
 
+### NodeMCU → L298N
 
+| NodeMCU | L298N |
+|---------|-------|
+| D1 | ENA |
+| D2 | IN1 |
+| D3 | IN2 |
+| GND | GND |
+
+### Fan → L298N
+
+| Fan | L298N |
+|-----|-------|
+| + | OUT1 |
+| - | OUT2 |
+
+### DHT11 → NodeMCU
+
+| DHT11 | NodeMCU |
+|-------|---------|
+| VCC | 3.3V |
+| GND | GND |
+| DATA | D5 |
+
+### ⚡ Power Setup
+
+- ESP8266 powered through **USB**
+- L298N powered via **external 5V supply**
+- ⚠️ **Ground must be common** between ESP8266 and L298N
+
+---
+
+## 💻 Software Requirements
+
+- [Arduino IDE](https://www.arduino.cc/en/software)
+- ESP8266 Board Package
+- DHT Sensor Library
+
+---
+
+## 🚀 Installation
+
+1. Install **Arduino IDE**
+2. Install **ESP8266 board support** in Board Manager
+3. Install the **DHT sensor library**
+4. Connect hardware according to the diagram above
+5. Upload the code to the ESP8266
+
+---
+
+## ⚙️ How It Works
+
+1. The **DHT11 sensor** reads temperature from the environment
+2. **ESP8266** processes the sensor data
+3. Based on temperature, a **PWM signal** is generated
+4. **L298N** adjusts the fan speed accordingly
+5. Fan speed **increases as temperature rises**
+
+---
+
+## Example Output
+
+| Temperature | Fan Speed |
+|-------------|-----------|
+| 24°C | 🟢 Low |
+| 27°C | 🟡 Medium |
+| 31°C | 🔴 High |
+
+---
+
+## Applications
+
+- 🏠 Smart home ventilation
+- 🚗 Vehicle cabin cooling systems
+- 🖥️ Server room temperature control
+- 🚛 Refrigerated transport monitoring
+- 🏢 Energy-efficient HVAC systems
+
+---
+
+## 🔮 Future Improvements
+
+- [ ] Multi-zone airflow balancing
+- [ ] Cloud monitoring using IoT platforms
+- [ ] Mobile app control
+- [ ] Machine learning based temperature prediction
+- [ ] Integration with smart building systems
+
+---
+
+## 📄 License
+
+This project is open-source and available under the [MIT License](LICENSE).
